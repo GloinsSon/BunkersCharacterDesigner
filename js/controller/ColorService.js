@@ -1,6 +1,6 @@
 "use strict";
 
-import {getColors, getColorsList} from "../data/DataHandler.js";
+import {getColors, getColorsList, getSpecie} from "../data/DataHandler.js";
 import {ViewController} from "../view/ViewController.js";
 
 /**
@@ -19,12 +19,14 @@ export class ColorService {
      */
     populateColors(type) {
         let viewController = new ViewController();
-        let colorsList = getColorsList(
-            document.querySelector("input[name='species']:checked").value,
+        const specie = document.querySelector("input[name='species']:checked").value;
+        const colorsList = getColorsList(
+            specie,
             document.querySelector("input[name='subspecies']:checked").value,
             document.querySelector("input[name='variant']:checked").value,
             type
         );
+
         let selection = "";
         const dice = document.getElementById("dice"+type).getAttribute("data-rarity");
 
@@ -43,6 +45,7 @@ export class ColorService {
 
             let disabled = "disabled";
             if (dice >= colorsList[i].rarity) disabled = "";
+
             selection += viewController.buildHeart(
                 type,
                 i,

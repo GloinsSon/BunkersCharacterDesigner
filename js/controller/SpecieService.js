@@ -123,6 +123,7 @@ export class SpecieService {
             for (const [variantKey, variant] of Object.entries(variantList)) {
                 let disabled = "disabled";
                 if (dice >= variant.rarity) disabled = "";
+
                 let logo = viewController.buildLogo(
                     "variant",
                     variantKey,
@@ -160,11 +161,11 @@ export class SpecieService {
             document.getElementById("humanoid").innerHTML = svgHuman;
             const root = document.documentElement;
             root.style.setProperty("--bgColor", specie.bgcolor);
-            root.style.setProperty("--formBgColor", specie.formBgColor);
-            root.style.setProperty("--colorCommon", specie.diceColor[0]);
-            root.style.setProperty("--colorUncommon", specie.diceColor[1]);
-            root.style.setProperty("--colorRare", specie.diceColor[2]);
-            root.style.setProperty("--colorMythical", specie.diceColor[3]);
+            root.style.setProperty("--formBgColor", "#fefefe80"); // specie.formBgColor);
+            root.style.setProperty("--colorCommon", specie.rarityColors[0]);
+            root.style.setProperty("--colorUncommon", specie.rarityColors[1]);
+            root.style.setProperty("--colorRare", specie.rarityColors[2]);
+            root.style.setProperty("--colorMythical", specie.rarityColors[3]);
 
             this.populateSubSpecies(specieKey);
 

@@ -49,7 +49,7 @@
       "elements": [
         {
           "file": "tag0.svg",
-          "transform": "translate(160,280) scale(0.7)"
+          "transform": "translate(210,390) scale(0.7)"
         }
       ]
     },
@@ -58,7 +58,7 @@
       "elements": [
         {
           "file": "tag1.svg",
-          "transform": "translate(160,280) scale(0.7)"
+          "transform": "translate(210,390) scale(0.7)"
         }
       ]
     },
@@ -67,7 +67,7 @@
       "elements": [
         {
           "file": "tag2.svg",
-          "transform": "translate(160,280) scale(0.7)"
+          "transform": "translate(210,390) scale(0.7)"
         }
       ]
     },
@@ -76,7 +76,7 @@
       "elements": [
         {
           "file": "tag3.svg",
-          "transform": "translate(160,280) scale(0.7)"
+          "transform": "translate(210,390) scale(0.7)"
         }
       ]
     },
@@ -85,7 +85,7 @@
       "elements": [
         {
           "file": "tag4.svg",
-          "transform": "translate(160,280) scale(0.7)"
+          "transform": "translate(210,390) scale(0.7)"
         }
       ]
     },
@@ -94,7 +94,7 @@
       "elements": [
         {
           "file": "tag5.svg",
-          "transform": "translate(160,280) scale(0.7)"
+          "transform": "translate(210,390) scale(0.7)"
         }
       ]
     },
@@ -103,7 +103,7 @@
       "elements": [
         {
           "file": "tag6.svg",
-          "transform": "translate(160,280) scale(0.7)"
+          "transform": "translate(210,390) scale(0.7)"
         }
       ]
     },
@@ -112,7 +112,7 @@
       "elements": [
         {
           "file": "tag7.svg",
-          "transform": "translate(152,298) scale(0.6) rotate(-20)"
+          "transform": "translate(200,410) scale(0.6) rotate(-20)"
         }
       ]
     }
@@ -123,16 +123,7 @@
       "elements": [
         {
           "file": "fangs0.svg",
-          "transform": "translate(225,150)"
-        }
-      ]
-    },
-    {
-      "rarity": 4,
-      "elements": [
-        {
-          "file": "fangs1.svg",
-          "transform": "translate(225,150)"
+          "transform": "translate(283,255)"
         }
       ]
     },
@@ -140,8 +131,25 @@
       "rarity": 2,
       "elements": [
         {
+          "file": "fangs1.svg",
+          "transform": "translate(283,255)"
+        }
+      ]
+    },
+    {
+      "rarity": 4,
+      "elements": [
+        {
           "file": "fangs2.svg",
-          "transform": "translate(225,150)"
+          "transform": "translate(283,255)"
+        }
+      ]
+    },{
+      "rarity": 4,
+      "elements": [
+        {
+          "file": "fangs3.svg",
+          "transform": "translate(283,255)"
         }
       ]
     }
@@ -152,10 +160,10 @@
       "elements": [
         {
           "file": "ears0.svg",
-          "transform": "translate(170,0) scale(3)"
+          "transform": "translate(240,100) scale(1)"
         }, {
           "file": "ears0.svg",
-          "transform": "translate(260,0) scale(3)"
+          "transform": "translate(360,100) scale(-1,1)"
         }
       ]
     }, {
@@ -163,10 +171,10 @@
       "elements": [
         {
           "file": "ears1.svg",
-          "transform": "translate(230,0) scale(-2.5,2.5)"
+          "transform": "translate(215,100) scale(1)"
         }, {
           "file": "ears1.svg",
-          "transform": "translate(255,0) scale(2.5)"
+          "transform": "translate(375,100) scale(-1,1)"
         }
       ]
     }, {
@@ -174,10 +182,10 @@
       "elements": [
         {
           "file": "ears2.svg",
-          "transform": "translate(220,0) scale(-3,3)"
+          "transform": "translate(235,80) scale(1)"
         }, {
           "file": "ears2.svg",
-          "transform": "translate(270,0) scale(3)"
+          "transform": "translate(370,80) scale(-1,1)"
         }
       ]
     }, {
@@ -185,10 +193,10 @@
       "elements": [
         {
           "file": "ears3.svg",
-          "transform": "translate(210,0) scale(-2.75, 2.75)"
+          "transform": "translate(225,85) scale(1)"
         }, {
           "file": "ears3.svg",
-          "transform": "translate(280,0) scale(2.75)"
+          "transform": "translate(375,85) scale(-1,1)"
         }
       ]
     }, {
@@ -196,10 +204,10 @@
       "elements": [
         {
           "file": "ears4.svg",
-          "transform": "translate(220,0) scale(-3,3)"
+          "transform": "translate(220,90) scale(1)"
         }, {
           "file": "ears4.svg",
-          "transform": "translate(270,0) scale(3)"
+          "transform": "translate(380,90) scale(-1,1)"
         }
       ]
     }
@@ -216,21 +224,24 @@
       "rarity": 16,
       "elements": [
         {
-          "file": "halo0.svg"
+          "file": "halo0.svg",
+          "transform": "translate(237,54) scale(1.5)"
         }
       ]
     }, {
       "rarity": 16,
       "elements": [
         {
-          "file": "halo1.svg"
+          "file": "halo1.svg",
+          "transform": "translate(212,50) scale(1.5)"
         }
       ]
     }, {
       "rarity": 16,
       "elements": [
         {
-          "file": "halo2.svg"
+          "file": "halo2.svg",
+          "transform": "translate(237,50) scale(1.5)"
         }
       ]
     }

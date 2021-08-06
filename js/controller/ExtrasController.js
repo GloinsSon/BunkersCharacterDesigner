@@ -1,6 +1,6 @@
 "use strict";
 
-import {getExtra, getExtrasList, loadJSON} from "../data/DataHandler.js";
+import {getExtra, getExtrasList, getSpecie, loadJSON} from "../data/DataHandler.js";
 import {ViewController} from "../view/ViewController.js";
 
 /**
@@ -107,6 +107,8 @@ export class ExtrasController {
             if (svgGroup !== null) {
                 svgGroup.innerHTML = '';
                 let elements = extras.elements;
+
+                if (extras.rarity != 0)
                 for (let i = 0; i < elements.length; i++) {
                     let svgElement = svgMisc.cloneNode(true);
                     svgElement.setAttribute("width", viewBox[2]);

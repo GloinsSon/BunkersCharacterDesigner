@@ -91,6 +91,7 @@ export class ViewController {
             "  <input type='radio' name='{name}' value='{value}' data-rarity='{rarity}' {disabled} />" +
             "  <img src='./js/data/{species}/{filename}' width='50' height='50' />" +
             "</label>";
+
         let replace = {
             "{name}": name,
             "{species}": species,

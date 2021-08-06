@@ -187,11 +187,12 @@ input[type="radio"]:disabled + svg {
 input[type="radio"] + figure {
     display: inline-block;
     float: left;
+
 }
 
 input[type="radio"] + figure > img {
-    margin: 10px 15px;
-    width: 40px;
+    padding: 10px 10px;
+    width: 45px;
 }
 
 input[type="radio"]:checked + figure > img {
@@ -228,6 +229,33 @@ input[type="radio"]:disabled + img {
     display: none;
 }
 
+input[data-rarity="2"] + img,
+input[data-rarity="2"] + figure > img,
+input[data-rarity="2"] + svg
+{
+    background-color: var(--colorCommon);
+}
+
+input[data-rarity="4"] + img,
+input[data-rarity="4"] + figure > img,
+input[data-rarity="4"] + svg
+{
+    background-color: var(--colorUncommon);
+}
+
+input[data-rarity="8"] + img,
+input[data-rarity="8"] + figure > img,
+input[data-rarity="8"] + svg
+{
+    background-color: var(--colorRare);
+}
+
+input[data-rarity="16"] + img,
+input[data-rarity="16"] + figure > img,
+input[data-rarity="16"] + svg
+{
+    background-color: var(--colorMythical);
+}
 /* === misc style === */
 .diceTarget {
     position: absolute;
