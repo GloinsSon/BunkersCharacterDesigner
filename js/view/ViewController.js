@@ -108,17 +108,27 @@ export class ViewController {
 
     buildDice(id, value, rarity) {
 
-        const templateStart = "<div id='{id}' class='die diceTarget' draggable='true' data-face='{value}' data-rarity='{rarity}'>";
-        const templateFig = "<figure class='face face-{ix}'></figure>";
+        const templateStart = "<div id='{id}' class='dice diceTarget' draggable='true' data-face='{value}' data-rarity='{rarity}'>";
+        const templateFig = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 67 75.87'>" +
+            "    <g>" +
+            "        <path d='M.5,19.18,33.5.43l33,18.75v37.5l-33,18.75L.5,56.68Z'/>" +
+            "        <path d='M33.5.43.5,56.68h66Z'/>" +
+            "        <path d='M17,28.56.5,19.18'/>" +
+            "        <path d='M50,28.56l16.5-9.38'/>" +
+            "        <path d='M33.5,56.68V75.43'/>" +
+            "        <path d='M17,28.56H50L33.5,56.68Z'/>" +
+            "        <text transform='translate(26 42.5)' "+
+            "        style='fill:#000; font-size:16px;font-family:MyriadPro-Regular, Myriad Pro'>{value}</text>" +
+            "    </g>" +
+            "</svg>";
         const replace = {
             "{id}": id,
             "{value}": value,
             "{rarity}": rarity
         };
         let html = this.multiReplace(templateStart, replace);
-        for (let i = 1; i <= 20; i++) {
-            html += this.multiReplace(templateFig, {"{ix}": i});
-        }
+        html += this.multiReplace(templateFig, {"{value}":value});
+
         html += "</div>";
         return html;
     }

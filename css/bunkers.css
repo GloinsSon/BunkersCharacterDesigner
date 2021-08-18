@@ -4,15 +4,20 @@
     --navBg: #08415C;
     --navText: #ff7000;
     --formBgColor: rgba(180, 180, 180, 0.7);
+    --colorCommon: #e9b77fc0;
+    --colorUncommon: #dd9871c0;
+    --colorRare: #cd7161c0;
+    --colorMythical: #894d4ac0;
     --maxWidth: 1800px;
 }
+
 
 body {
     /*background-color: var(--bgColor);*/
     background-image: linear-gradient(
             var(--bgColor),
             var(--bgColor)
-    ),url("../img/background.jpg");
+    ), url("../img/background.jpg");
     background-size: 100% auto;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1.2em;
@@ -41,7 +46,7 @@ footer {
 }
 
 nav a, nav a:visited,
-footer a, footer a:visited{
+footer a, footer a:visited {
     margin: 0 30px;
     color: var(--navText);
 }
@@ -59,11 +64,63 @@ main {
 
 #intro {
     display: flex;
+    position: relative;
     flex: 0 0 100%;
 }
 
+#overview {
+    position: relative;
+}
+
+#instructions {
+    position: relative;
+}
+
+#diceArea {
+    position: absolute;
+    top: 150px;
+    left: 0;
+    background-color: transparent;
+    z-index: 2;
+}
+
+@font-face {
+    font-family: 'Minecraftia';
+    src: url('Minecraftia-Regular.woff2') format('woff2'),
+    url('Minecraftia-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 #rarity {
-    margin-left: auto;
+    margin: 0 auto 15px auto;
+    font-family: "Minecraftia", "Lucida Sans Typewriter", Monospace;
+    font-size: 0.8em;
+    line-height: 1em;
+    letter-spacing: 2px;
+}
+
+#rarity table {
+    padding: 0;
+    margin: 30px auto;
+    border: 2px solid var(--colorMythical);
+    border-collapse: collapse;
+}
+
+#rarity thead {
+    background-color: var(--colorRare);
+}
+
+#rarity tbody {
+    background-color: var(--formBgColor);
+}
+
+#rarity thead th,
+#rarity tbody th,
+#rarity tbody td {
+    text-align: center;
+    padding: 10px 20px 0px 20px;
+    margin: 0;
 }
 
 #selection {
@@ -118,9 +175,11 @@ button {
     padding: 10px;
     margin-bottom: 10px;
 }
-
+button:disabled {
+    box-shadow: 0 0 transparent;
+}
 button img {
-    height: 50px;
+    height: 40px;
 }
 
 h2 {
@@ -149,6 +208,7 @@ svg {
 img {
     margin: 0 auto;
 }
+
 /* === form styles === */
 #selection input {
     position: absolute;
@@ -199,6 +259,10 @@ fieldset > legend {
 }
 
 /* === selectable elements === */
+:disabled {
+    cursor: not-allowed;
+}
+
 input[type="radio"] + svg {
     padding: 2px;
     stroke: #eeeeee;
@@ -207,8 +271,7 @@ input[type="radio"] + svg {
 
 input[type="radio"] + img,
 input[type="radio"] + figure > img,
-input[type="radio"] + svg
-{
+input[type="radio"] + svg {
     border: #606060 3px solid;
     border-radius: 20px;
     padding: 3px;
@@ -217,8 +280,7 @@ input[type="radio"] + svg
 
 input[type="radio"]:checked + img,
 input[type="radio"]:checked + figure > img,
-input[type="radio"]:checked + svg
-{
+input[type="radio"]:checked + svg {
     box-shadow: 3px 3px rgba(0, 0, 0, 0.6);
     border-radius: 20px;
 }
@@ -226,58 +288,113 @@ input[type="radio"]:checked + svg
 input[type="radio"]:disabled + img,
 input[type="radio"]:disabled + figure > img,
 input[type="radio"]:disabled + figure > figcaption,
-input[type="radio"]:disabled + svg
-{
+input[type="radio"]:disabled + svg {
     cursor: not-allowed;
     border-color: red;
     filter: opacity(50%);
+    cursor: not-allowed;
 }
 
 input[data-rarity="2"] + img,
 input[data-rarity="2"] + figure > img,
-input[data-rarity="2"] + svg
-{
+input[data-rarity="2"] + svg {
     background-color: var(--colorCommon);
 }
 
 input[data-rarity="4"] + img,
 input[data-rarity="4"] + figure > img,
-input[data-rarity="4"] + svg
-{
+input[data-rarity="4"] + svg {
     background-color: var(--colorUncommon);
 }
 
 input[data-rarity="8"] + img,
 input[data-rarity="8"] + figure > img,
-input[data-rarity="8"] + svg
-{
+input[data-rarity="8"] + svg {
     background-color: var(--colorRare);
 }
 
 input[data-rarity="16"] + img,
 input[data-rarity="16"] + figure > img,
-input[data-rarity="16"] + svg
-{
+input[data-rarity="16"] + svg {
     background-color: var(--colorMythical);
 }
-/* === misc style === */
-#diceArea {
-    background-color: transparent;
-    z-index: 2;
+
+/* === dice management */
+.dice {
+    display: inline-block;
+    flex: 0 0 90px;
+    height: 90px;
+    width: 90px;
+}
+
+.dice[data-face="0"] svg g {
+    fill: #c0c0c0;
+    stroke: #000;
+}
+
+.dice[data-face="1"] svg g,
+.dice[data-face="2"] svg g,
+.dice[data-face="3"] svg g,
+.dice[data-face="4"] svg g,
+.dice[data-face="5"] svg g,
+.dice[data-face="6"] svg g,
+.dice[data-face="7"] svg g,
+.dice[data-face="8"] svg g {
+    fill: var(--colorCommon);
+    stroke: #000;
+}
+
+.dice[data-face="9"] svg g,
+.dice[data-face="10"] svg g,
+.dice[data-face="11"] svg g,
+.dice[data-face="12"] svg g {
+    fill: var(--colorUncommon);
+    stroke: #000;
+}
+
+.dice[data-face="13"] svg g,
+.dice[data-face="14"] svg g {
+    fill: var(--colorRare);
+    stroke: #000;
+}
+
+.dice[data-face="15"] svg g,
+.dice[data-face="16"] svg g,
+.dice[data-face="17"] svg g,
+.dice[data-face="18"] svg g,
+.dice[data-face="19"] svg g {
+    fill: #f0f0f0;
+    stroke: #000;
+}
+
+.dice[data-face="20"] svg g {
+    fill: var(--colorMythical) !important;
+    stroke: #000;
+}
+
+
+#diceArea .dice[data-face="0"] {
+    display: none;
+    z-index: -1;
 }
 
 #diceArea > div {
     z-index: 5;
 }
+
 .diceTarget {
     height: 75px;
     width: 75px;
 }
+
 fieldset > .diceTarget {
     position: absolute;
     margin-left: -90px;
     margin-top: -20px;
 }
+
+/* === misc style === */
+
 
 #specieSet {
     padding-left: 10px;
@@ -302,8 +419,3 @@ fieldset > .diceTarget {
     z-index: -1;
 }
 
-#overview {
-    position: relative;
-    top: 0;
-    left: 0;
-}

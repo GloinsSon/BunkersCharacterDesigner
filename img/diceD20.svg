@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67 75.87">
-    <g class="die" data-face="20">
+    <g class="die">
         <path id="path4777" d="M.5,19.18,33.5.43l33,18.75v37.5l-33,18.75L.5,56.68Z"/>
         <path id="path4817" d="M33.5.43.5,56.68h66Z"/>
         <path id="path4819" d="M17,28.56.5,19.18"/>
         <path id="path4821" d="M50,28.56l16.5-9.38"/>
         <path id="path4823" d="M33.5,56.68V75.43"/>
         <path id="path4815" d="M17,28.56H50L33.5,56.68Z"/>
-        <text transform="translate(26.15 42.05)" style="font-size:14px;font-family:MyriadPro-Regular, Myriad Pro">
+        <text transform="translate(26.15 42.05)" style="fill:#000; font-size:14px;font-family:MyriadPro-Regular, Myriad Pro">
             20
         </text>
     </g>

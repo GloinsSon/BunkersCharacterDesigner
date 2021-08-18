@@ -62,8 +62,6 @@ export default class Controller {
      */
     dragDice(event) {
         event.dataTransfer.setData("text", event.currentTarget.id);
-        let img = document.getElementById("d20");
-        event.dataTransfer.setDragImage(img,10,10);
     }
 
     /**
@@ -80,7 +78,9 @@ export default class Controller {
 
         const tempFace = sourceElement.getAttribute("data-face");
         sourceElement.setAttribute("data-face", targetElement.getAttribute("data-face"));
+        sourceElement.getElementsByTagName("text")[0].innerHTML = targetElement.getAttribute("data-face");
         targetElement.setAttribute("data-face", tempFace);
+        targetElement.getElementsByTagName("text")[0].innerHTML = tempFace;
 
         const tempRarity = sourceElement.getAttribute("data-rarity");
         sourceElement.setAttribute("data-rarity", targetElement.getAttribute("data-rarity"));

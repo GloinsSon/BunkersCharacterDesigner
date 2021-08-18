@@ -77,17 +77,20 @@ export default class DiceController {
      * rolling the dice
      */
     roller() {
-        document.getElementById("instructions").hidden = true;
+        document.getElementById("instructions").style.color = "transparent";
+        document.getElementById("rollDice").disabled = true;
         const diceArea = document.getElementById("diceArea");
         diceArea.style.height = "100px";
         let canvas = document.getElementById("canvas");
         canvas.style.zIndex = "9";
         canvas.hidden = false;
-        let diceArray = document.getElementsByClassName("die");
+        let diceArray = document.getElementsByClassName("dice");
         for (let i = 0; i < diceArray.length; i++) {
             let dice = diceArray[i];
             dice.setAttribute("data-face", "0");
             dice.setAttribute("data-rarity", "0");
+            let text = dice.getElementsByTagName("text")[0];
+            text.innerHTML = "0";
         }
         triggerUpdate();
 
@@ -99,8 +102,9 @@ export default class DiceController {
             diceArray = diceArea.querySelectorAll("div[data-face='0']");
             if (diceArray.length === 0) {
                 clearInterval(interval);
-                //canvas.hidden = true;
+                canvas.hidden = true;
                 canvas.style.zIndex = "-1";
+                document.getElementById("resetDice").disabled = false;
             } else {
                 self.randomDiceThrow(diceArray.length);
             }
@@ -129,6 +133,8 @@ export default class DiceController {
             if (rarity !== "0") {
                 dice.setAttribute("data-face", result);
                 dice.setAttribute("data-rarity", rarity);
+                let text = dice.getElementsByTagName("text")[0];
+                text.innerHTML = result;
                 count++;
             }
         }
@@ -143,7 +149,7 @@ export default class DiceController {
 
         // clean all bodies from CANNON
         let bodies = self.world.bodies;
-        for (let i=bodies.length-1; i>=0; i--) {
+        for (let i = bodies.length - 1; i >= 0; i--) {
             let body = bodies[i];
             if (body.mass > 0) {
                 self.world.removeBody(body);
@@ -157,19 +163,24 @@ export default class DiceController {
      */
     resetDice() {
         let selection = document.getElementById("selection");
-        let dice = selection.getElementsByClassName("die");
-        for (let i = 0; i < dice.length; i++) {
-            let die = dice[i];
-            die.setAttribute("data-face", "20");
-            die.setAttribute("data-rarity", "16");
+        let diceList = selection.getElementsByClassName("dice");
+        for (let i = 0; i < diceList.length; i++) {
+            let dice = diceList[i];
+            dice.setAttribute("data-face", "20");
+            dice.setAttribute("data-rarity", "16");
+            let text = dice.getElementsByTagName("text")[0];
+            text.innerHTML = "20";
         }
         selection = document.getElementById("diceArea");
-        dice = selection.getElementsByClassName("die");
-        for (let i = 0; i < dice.length; i++) {
-            let die = dice[i];
-            die.setAttribute("data-face", "0");
-            die.setAttribute("data-rarity", "0");
+        diceList = selection.getElementsByClassName("dice");
+        for (let i = 0; i < diceList.length; i++) {
+            let dice = diceList[i];
+            dice.setAttribute("data-face", "0");
+            dice.setAttribute("data-rarity", "0");
         }
+
+        document.getElementById("rollDice").disabled = false;
+        document.getElementById("resetDice").disabled = true;
 
         triggerUpdate();
     }
@@ -308,9 +319,9 @@ export default class DiceController {
         let specieKey = document.querySelector("input[name='species']:checked").value;
         const specie = getSpecie(specieKey);
         let index = 0;
-        for (let i=0; i<20; i++) {
-            if (i===8 || i===12 || i===14) index++;
-            if (i >= 14 && i <=18) {
+        for (let i = 0; i < 20; i++) {
+            if (i === 8 || i === 12 || i === 14) index++;
+            if (i >= 14 && i <= 18) {
                 colorArray.push("#ffffff");
             } else {
                 colorArray.push(specie.rarityColors[index].substring(0, 7));
@@ -319,6 +330,7 @@ export default class DiceController {
 
         return colorArray;
     }
+
     /**
      * removes an object from the scene
      * @param object

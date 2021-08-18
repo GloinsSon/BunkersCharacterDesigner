@@ -48,19 +48,15 @@ function registerListeners() {
     document.getElementById("resetDice").addEventListener("click", diceController.resetDice);
 
     document.getElementById("selection").addEventListener("change", controller.changeSettings);
-    //document.getElementById("random").addEventListener("click", randomBunker);
+    //document.getElementById("random").addEventListener("click", randomBunker);  TODO
     document.getElementById("btnDownload").addEventListener("click", createDownload);
 
-    const diceList = document.getElementsByClassName("die");
+    const diceList = document.getElementsByClassName("dice");
     for (let dice of diceList) {
         dice.addEventListener("dragstart", controller.dragDice);
         dice.addEventListener("drop", controller.dropDice);
         dice.addEventListener("dragover", controller.allowDrop);
     }
-    const diceArea = document.getElementById("diceArea");
-    //diceArea.addEventListener("dragstart", controller.dragDice);
-    //diceArea.addEventListener("drop", controller.dropDice);  FIXME
-    diceArea.addEventListener("dragover", controller.allowDrop);
 }
 
 function triggerUpdate() {
@@ -100,4 +96,8 @@ function createDownload() {
     link.href = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
     document.getElementById("link").hidden = false;
 
+}
+
+function snooze(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

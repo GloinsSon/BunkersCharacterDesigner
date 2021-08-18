@@ -19,7 +19,7 @@
     "name": "Flappers",
     "bgcolor": "#d3eaeb80",
     "formBgColor": "#77c1e440",
-    "rarityColors": ["#68ffb0c0","#41ebffc0","#6d95ffc0","#6950d0c0"],
+    "rarityColors": ["#68ffb0","#41ebff","#6d95ff","#6950d0"],
     "logo": "flappersLogo.png",
     "humanoid": []
   },
